@@ -11,5 +11,5 @@ export const removeFromCart = payload => {
     return {type: types.REMOVE_FROM_CART, payload};
 };
 export const clearCart = payload => {
-    return {type: types.ADD_TO_CART};
+    return {type: types.CLEAR_CART, payload};
 };

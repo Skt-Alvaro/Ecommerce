@@ -7,17 +7,12 @@ import {useDispatch} from 'react-redux';
 let {width} = Dimensions.get('window');
 
 const ProductCard = props => {
-    const [cartItems, setCartItems] = useState([]);
     const {name, price, image, countInStock} = props;
     const dispatch = useDispatch();
 
-    const add = () => {
-        const res = {quantity: 1, ...props};
-        setCartItems([...cartItems, res]);
-        dispatch(actions.addToCart(cartItems));
+    const add = res => {
+        dispatch(actions.addToCart(res));
     };
-
-    console.log(cartItems);
 
     return (
         <Container>
@@ -36,7 +31,7 @@ const ProductCard = props => {
             <Price>$ {price}</Price>
             {countInStock > 0 ? (
                 <View style={{marginBottom: 60}}>
-                    <TouchableOpacity onPress={() => add()}>
+                    <TouchableOpacity onPress={() => add(props)}>
                         <Text style={{color: 'green'}}>Add</Text>
                     </TouchableOpacity>
                 </View>

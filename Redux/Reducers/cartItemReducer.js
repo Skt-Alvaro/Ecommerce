@@ -6,10 +6,11 @@ const initial_data = {
 const cartItemReducer = (state = initial_data, action) => {
     switch (action.type) {
         case types.ADD_TO_CART:
-            return {...state, items: action.payload};
+            return {...state, items: [...state.items, action.payload]};
 
         case types.REMOVE_FROM_CART:
-            return {...state, items: items.filter(i => i !== action.payload)};
+            const filtered = state.items.filter(i => i !== action.payload);
+            return {...state, items: filtered};
 
         case types.CLEAR_CART:
             return {...state, items: []};

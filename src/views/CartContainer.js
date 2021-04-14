@@ -2,10 +2,10 @@ import React from 'react';
 import {View} from 'react-native';
 import Cart from '../components/Cart/Cart';
 
-const CartContainer = () => {
+const CartContainer = props => {
     return (
         <View>
-            <Cart />
+            <Cart navigation={props.navigation} />
         </View>
     );
 };
